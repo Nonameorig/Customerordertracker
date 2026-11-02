@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заказы услуг</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div>
+      <h1>Заказы <em>услуг</em></h1>
+      <div class="sub">Трекер входящих заказов от клиентов — проекты, сроки, суммы и статусы в одном месте.</div>
+    </div>
+    <div class="mark">order log</div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="panel">
+    <h2>Новый заказ <small>добавить запись</small></h2>
+    <div class="grid">
+      <input id="f-title" placeholder="Услуга / проект *" autocomplete="off">
+      <input id="f-client" placeholder="Клиент / компания" autocomplete="off">
+      <input id="f-contact" placeholder="Контакт (tg / email / тел)" autocomplete="off">
+      <input id="f-price" type="number" placeholder="Сумма, ₽" min="0" step="1">
+      <input id="f-deadline" type="date" title="Дедлайн">
+      <select id="f-status">
+        <option value="на согласовании">На согласовании</option>
+        <option value="в работе" selected>В работе</option>
+        <option value="на проверке">На проверке</option>
+        <option value="завершён">Завершён</option>
+        <option value="отменён">Отменён</option>
+      </select>
+      <textarea id="f-desc" placeholder="Описание задачи, ТЗ, ссылки..."></textarea>
+    </div>
+    <div class="row">
+      <button class="btn p" id="addBtn">Добавить заказ</button>
+      <button class="btn g" id="resetBtn">Очистить</button>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input class="search" id="search" placeholder="Поиск по услуге, клиенту..." autocomplete="off">
+    <button class="chip on" data-f="все">Все</button>
+    <button class="chip" data-f="на согласовании">Согласование</button>
+    <button class="chip" data-f="в работе">В работе</button>
+    <button class="chip" data-f="на проверке">Проверка</button>
+    <button class="chip" data-f="завершён">Завершённые</button>
+    <button class="chip" data-f="отменён">Отменённые</button>
+  </div>
+
+  <div class="orders" id="orders"></div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Редактировать заказ</h3>
+    <div class="grid">
+      <input id="e-title" placeholder="Услуга / проект *">
+      <input id="e-client" placeholder="Клиент">
+      <input id="e-contact" placeholder="Контакт">
+      <input id="e-price" type="number" placeholder="Сумма, ₽" min="0">
+      <input id="e-deadline" type="date">
+      <select id="e-status">
+        <option value="на согласовании">На согласовании</option>
+        <option value="в работе">В работе</option>
+        <option value="на проверке">На проверке</option>
+        <option value="завершён">Завершён</option>
+        <option value="отменён">Отменён</option>
+      </select>
+      <textarea id="e-desc" placeholder="Описание"></textarea>
+    </div>
+    <div class="mactions">
+      <button class="btn g" id="cancelEdit">Отмена</button>
+      <button class="btn p" id="saveEdit">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
